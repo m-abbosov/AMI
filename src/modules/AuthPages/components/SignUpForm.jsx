@@ -1,30 +1,50 @@
 import { Box, Checkbox, Flex, Icon, Link, Stack, Text } from '@chakra-ui/react'
-import {MdAlternateEmail} from 'react-icons/md'
-import { FiPhoneCall, FiKey, FiUsers} from 'react-icons/fi'
-import {AiFillCaretDown} from 'react-icons/ai'
-import {BsArrowUpRight} from 'react-icons/bs'
+import { MdAlternateEmail } from 'react-icons/md'
+import { FiPhoneCall, FiKey, FiUsers } from 'react-icons/fi'
+import { AiFillCaretDown } from 'react-icons/ai'
+import { BsArrowUpRight } from 'react-icons/bs'
 import React from 'react'
 import Btn from '@modules/common/Btn'
 import FormField from '@modules/common/Form/FormField'
 import SwitchLink from './SwitchLink'
 
 const formFields = [
-  { label: 'E-mail', placeholder: 'Введите ваш e-mail', type: 'email', icon: MdAlternateEmail },
+  {
+    label: 'E-mail',
+    placeholder: 'Введите ваш e-mail',
+    type: 'email',
+    icon: MdAlternateEmail,
+  },
   {
     label: 'Номер телефона',
     placeholder: 'Введите ваш номер телефона',
     type: 'phone',
-    icon: FiPhoneCall
+    icon: FiPhoneCall,
   },
-  { label: 'Пароль', placeholder: 'Введите ваш пароль', type: 'password', icon: FiKey },
+  {
+    label: 'Пароль',
+    placeholder: 'Введите ваш пароль',
+    type: 'password',
+    icon: FiKey,
+  },
   {
     label: 'Повторите пароль',
     placeholder: 'Повторите ваш пароль',
     type: 'password',
-    icon: FiKey
+    icon: FiKey,
   },
-  { label: 'Реферал', placeholder: 'Введите ID пришласившего', type: 'number', icon: FiUsers },
-  { label: 'Страна', placeholder: 'Выберите страну', type: 'text', icon: AiFillCaretDown },
+  {
+    label: 'Реферал',
+    placeholder: 'Введите ID пришласившего',
+    type: 'number',
+    icon: FiUsers,
+  },
+  {
+    label: 'Страна',
+    placeholder: 'Выберите страну',
+    type: 'text',
+    icon: AiFillCaretDown,
+  },
 ]
 
 const checkBoxes = ['Terms of use', 'Cookie policy']
@@ -72,11 +92,12 @@ const SignUpForm = () => {
           </Flex>
         </form>
       </Box>
-      <Box
-        mt='30px'
-        w='full'
-      >
-        <SwitchLink label={'Я уже зарегистрирован.'} linkLabel='Вход' path='/signin' />
+      <Box mt='30px' w='full'>
+        <SwitchLink
+          label={'Я уже зарегистрирован.'}
+          linkLabel='Вход'
+          path='/signin'
+        />
       </Box>
     </Box>
   )

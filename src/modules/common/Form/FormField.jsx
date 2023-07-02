@@ -21,7 +21,7 @@ const FormField = ({type, placeholder, label,  icon:PassedIcon, ...rest}) => {
             pointerEvents={'none'}
             height='full'
           >
-            {<Icon as={PassedIcon} color='custom.gray' />}
+            {<Icon as={PassedIcon} color='custom.grayIcon' />}
           </InputRightElement>
         )}
         <InputField type={type} placeholder={placeholder} />
