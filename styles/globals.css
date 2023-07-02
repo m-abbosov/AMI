@@ -1,5 +1,6 @@
 @import url('https://fonts.googleapis.com/css2?family=Zen+Dots&display=swap');
 
+
 @font-face{
   font-family: myFont;
   src: url(/ristretto.otf);
@@ -17,10 +18,14 @@ a {
   text-decoration: none;
 }
 
+h1, h2, p{
+  font-family: myFont;
+}
+
 * {
   box-sizing: border-box;
 }
 
-.logo{
+.logoText{
   font-family: 'Zen Dots', cursive;
 }
