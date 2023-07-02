@@ -1,19 +1,20 @@
-import { Box, Flex } from '@chakra-ui/react'
+import { Box, Flex, Text, VStack } from '@chakra-ui/react'
 import React from 'react'
+import Sidebar from './Sidebar'
+
 
 const Layout = ({children}) => {
   return (
     <Flex w='full' minH='100vh'>
       <Box
-        flex='2'
+        flex='3'
         bg='gray'
         borderTopRightRadius={'15%'}
-        // border='1px solid green'
         minH='100vh'
       >
         {children}
       </Box>
-      <Box bg='inherit' flex='1' minH='100vh'></Box>
+      <Sidebar/>
     </Flex>
   )
 }
