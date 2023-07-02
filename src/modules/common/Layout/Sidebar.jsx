@@ -76,12 +76,12 @@ const Sidebar = ({ flex }) => {
             key={i}
             py='65px'
             border='1px solid'
-            borderColor='gray'
+            borderColor='custom.gray'
           >
             <Link href={MenuLink.absolutePath}>
               <VStack>
                 <MenuLink.icon isActive={path.match(MenuLink.pathToMatch)} />
-                <Text textTransform={'uppercase'} color='black' fontSize='24px'>
+                <Text textTransform={'uppercase'} color='custom.black' fontSize='24px'>
                   {MenuLink.label}
                 </Text>
               </VStack>

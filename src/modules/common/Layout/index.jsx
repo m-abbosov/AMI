@@ -8,7 +8,7 @@ const Layout = ({children}) => {
     <Flex w='full' minH='100vh'>
       <Box
         flex='3'
-        bg='gray'
+        bg='custom.gray'
         borderTopRightRadius={'15%'}
         minH='100vh'
       >

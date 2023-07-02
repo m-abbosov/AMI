@@ -6,7 +6,7 @@ const SignIn = () => {
     <Box textAlign='center' pt='70px'>
       <Text
         fontSize='50px'
-        color='black'
+        color='custom.black'
         fontWeight='400'
         textTransform={'uppercase'}
       >
