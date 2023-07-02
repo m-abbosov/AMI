@@ -92,13 +92,6 @@ const SignUpForm = () => {
           </Flex>
         </form>
       </Box>
-      <Box mt='30px' w='full'>
-        <SwitchLink
-          label={'Я уже зарегистрирован.'}
-          linkLabel='Вход'
-          path='/signin'
-        />
-      </Box>
     </Box>
   )
 }
