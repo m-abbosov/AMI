@@ -1,17 +1,23 @@
 import React from 'react'
 import { Box, Text } from '@chakra-ui/react'
+import PageHead from '@modules/common/PageHead'
+import SwitchLink from './components/SwitchLink'
+import SignInForm from './components/SignInForm'
 
 const SignIn = () => {
   return (
-    <Box textAlign='center' pt='70px'>
-      <Text
-        fontSize='50px'
-        color='custom.black'
-        fontWeight='400'
-        textTransform={'uppercase'}
-      >
-        Вход
-      </Text>
+    <Box pt='70px'>
+      <PageHead>Вход</PageHead>
+      <Box mt='50px'>
+        <SignInForm/>
+      </Box>
+      <Box textAlign='center' mt='30px' w='full'>
+        <SwitchLink
+          label={''}
+          linkLabel='Регистрация'
+          path='/signup'
+        />
+      </Box>
     </Box>
   )
 }

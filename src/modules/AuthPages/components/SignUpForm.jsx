@@ -1,4 +1,4 @@
-import { Box, Checkbox, Flex, Icon, Link, Stack, Text } from '@chakra-ui/react'
+import { Box, Checkbox, Flex, Icon, Stack, Text } from '@chakra-ui/react'
 import { MdAlternateEmail } from 'react-icons/md'
 import { FiPhoneCall, FiKey, FiUsers } from 'react-icons/fi'
 import { AiFillCaretDown } from 'react-icons/ai'
@@ -6,7 +6,6 @@ import { BsArrowUpRight } from 'react-icons/bs'
 import React from 'react'
 import Btn from '@modules/common/Btn'
 import FormField from '@modules/common/Form/FormField'
-import SwitchLink from './SwitchLink'
 
 const formFields = [
   {
@@ -51,47 +50,40 @@ const checkBoxes = ['Terms of use', 'Cookie policy']
 
 const SignUpForm = () => {
   return (
-    <Box mt='50px'>
-      <Box p='40px' bg='white' maxWidth='770px' margin='0 auto'>
-        <form>
-          <Flex flexWrap={'wrap'} gap='30px' justifyContent={'center'}>
-            {formFields.map((field, i) => (
-              <FormField w='45%' key={i} {...field} />
-            ))}
-            <Box width='45%'>
-              <Btn>
-                <span>Зарегистрироваться</span>
-                <Icon
-                  as={BsArrowUpRight}
-                  color='custom.grayIcon'
-                  fontSize='20px'
-                />
-              </Btn>
-            </Box>
-            <Box width='45%'>
-              <Stack
-                direction='row'
-                gap='20px'
-                alignItems='center'
-                height='full'
-              >
-                {checkBoxes.map((checkbox, i) => (
-                  <Checkbox key={i}>
-                    <Text
-                      fontSize='13px'
-                      lineHeight={'24px'}
-                      color='custom.blue'
-                      as='span'
-                    >
-                      {checkbox}
-                    </Text>
-                  </Checkbox>
-                ))}
-              </Stack>
-            </Box>
-          </Flex>
-        </form>
-      </Box>
+    <Box p='40px' bg='white' maxWidth='770px' margin='0 auto'>
+      <form>
+        <Flex flexWrap={'wrap'} gap='30px' justifyContent={'center'}>
+          {formFields.map((field, i) => (
+            <FormField w='45%' key={i} {...field} />
+          ))}
+          <Box width='45%'>
+            <Btn type='submit'>
+              <span>Зарегистрироваться</span>
+              <Icon
+                as={BsArrowUpRight}
+                color='custom.grayIcon'
+                fontSize='20px'
+              />
+            </Btn>
+          </Box>
+          <Box width='45%'>
+            <Stack direction='row' gap='20px' alignItems='center' height='full'>
+              {checkBoxes.map((checkbox, i) => (
+                <Checkbox key={i}>
+                  <Text
+                    fontSize='13px'
+                    lineHeight={'24px'}
+                    color='custom.blue'
+                    as='span'
+                  >
+                    {checkbox}
+                  </Text>
+                </Checkbox>
+              ))}
+            </Stack>
+          </Box>
+        </Flex>
+      </form>
     </Box>
   )
 }

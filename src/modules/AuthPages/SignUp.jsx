@@ -8,7 +8,9 @@ const SignUp = () => {
   return (
     <Box pt='70px'>
       <PageHead>Регистрация</PageHead>
-      <SignUpForm />
+      <Box mt='50px'>
+        <SignUpForm />
+      </Box>
       <Box textAlign='center' mt='30px' w='full'>
         <SwitchLink
           label={'Я уже зарегистрирован.'}
