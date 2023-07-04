@@ -6,9 +6,9 @@ import SignInForm from './components/SignInForm'
 
 const SignIn = () => {
   return (
-    <Box pt='70px'>
+    <Box pt={['20px', '70px']}>
       <PageHead>Вход</PageHead>
-      <Box mt='50px'>
+      <Box mt={['10px', '50px']} px={['20px', '0']}>
         <SignInForm/>
       </Box>
       <Box textAlign='center' mt='30px' w='full'>

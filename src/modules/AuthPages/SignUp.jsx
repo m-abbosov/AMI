@@ -6,9 +6,9 @@ import SwitchLink from './components/SwitchLink'
 
 const SignUp = () => {
   return (
-    <Box pt='70px'>
+    <Box pt={['20px', '70px']}>
       <PageHead>Регистрация</PageHead>
-      <Box mt='50px'>
+      <Box mt={['10px', '50px']} px={['20px', '0']}>
         <SignUpForm />
       </Box>
       <Box textAlign='center' mt='30px' w='full'>

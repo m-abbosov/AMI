@@ -5,12 +5,13 @@ import Sidebar from './Sidebar'
 
 const Layout = ({children}) => {
   return (
-    <Flex w='full' minH='100vh'>
+    <Flex w='full' minH={'100vh'} direction={['column-reverse', 'row']}>
       <Box
         flex='3'
         bg='custom.gray'
-        borderTopRightRadius={'15%'}
-        minH='100vh'
+        borderTopRightRadius={['0', '15%']}
+        minH={['unset', '100vh']}
+
       >
         {children}
       </Box>
