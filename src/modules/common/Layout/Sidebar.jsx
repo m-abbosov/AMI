@@ -49,42 +49,50 @@ const Sidebar = ({ flex }) => {
   const [isActiveMenu, setActiveMenu] = useState(false);
   const { pathname: path } = useRouter()
   return (
-    <Box position='relative' height={['100%', '100vh']} flex={flex || 1} py={['20px', '0px']} minH={['100%', '100vh']}>
-      <Flex minWidth='max-content' alignItems='center' gap='7' justifyContent='center'>
+    <Box
+      position='relative'
+      height={['100%', '100vh']}
+      flex={flex || 1}
+      py={['20px', '0px']}
+      minH={['100%', '100vh']}
+    >
+      <Flex
+        minWidth='max-content'
+        alignItems='center'
+        gap='7'
+        justifyContent='center'
+      >
         <VStack spacing={0} w='full' py='0px' textAlign='center'>
-        <Text
-          className='logoText'
+          <Text
+            className='logoText'
             fontSize={['26px', '52px']}
-          color='darkGray'
-          textTransform={'uppercase'}
+            color='darkGray'
+            textTransform={'uppercase'}
             sx={{ mb: ['0', '-20px'] }}
-        >
-          ami
-        </Text>
-        <Text
-          className='logoText'
+          >
+            ami
+          </Text>
+          <Text
+            className='logoText'
             fontSize={['10px', '20px']}
-          color='darkGray'
-          textTransform={'uppercase'}
-          sx={{ padding: 0, margin: 0 }}
-        >
-          finance
+            color='darkGray'
+            textTransform={'uppercase'}
+            sx={{ padding: 0, margin: 0 }}
+          >
+            finance
           </Text>
         </VStack>
-        <HStack spacing={5} w='full' py='0px' textAlign='center' >
+        <HStack spacing={5} w='full' py='0px' textAlign='center'>
           <LangMenu width='50px' height='50px' display={['block', 'none']} />
           <MenuIconMobile isActiveMenu={isActiveMenu} />
         </HStack>
-
-
-
       </Flex>
       <Grid
-        position='absolute'
+        pos={'fixed'}
+        width='25%'
+        right='0'
         top='23%'
         bottom='0'
-        left='0'
-        w={['100%', 'full']}
         templateColumns='repeat(2, 1fr)'
         display={['none', 'grid']}
       >
@@ -99,7 +107,11 @@ const Sidebar = ({ flex }) => {
             <Link href={MenuLink.absolutePath}>
               <VStack>
                 <MenuLink.icon isActive={path.match(MenuLink.absolutePath)} />
-                <Text textTransform={'uppercase'} color='custom.black' fontSize='24px'>
+                <Text
+                  textTransform={'uppercase'}
+                  color='custom.black'
+                  fontSize='24px'
+                >
                   {MenuLink.label}
                 </Text>
               </VStack>
