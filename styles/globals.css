@@ -45,3 +45,9 @@ label {
 .checkbox:active, .checkbox:hover{
   background: transparent;
 }
+
+[type="file"]{
+  border: 1px solid #ccc;
+  visibility: hidden;
+}
+

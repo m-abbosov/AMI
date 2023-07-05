@@ -1,17 +1,13 @@
 import { Box, FormControl, FormLabel, Select } from '@chakra-ui/react'
 import React from 'react'
+import FormFieldLabel from './FormFieldLabel'
 
 const FormSelectField = ({placeholder, size, options, label, ...rest}) => {
   return (
     <FormControl {...rest}>
-      <FormLabel
-        fontSize='13px'
-        color='rgba(37, 39, 40, 0.4)'
-        fontWeight='400'
-        lineHeight='24px'
-      >
+      <FormFieldLabel >
         {label || ''}
-      </FormLabel>
+      </FormFieldLabel>
       <Select
         placeholder={placeholder}
         variant='filled'
