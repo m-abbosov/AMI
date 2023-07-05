@@ -1,4 +1,13 @@
-import { Box, Flex, Grid, GridItem, Icon, Text, VStack, HStack } from '@chakra-ui/react'
+import {
+  Box,
+  Flex,
+  Grid,
+  GridItem,
+  Icon,
+  Text,
+  VStack,
+  HStack,
+} from '@chakra-ui/react'
 import AndroidIcon from '@icons/AndroidIcon'
 import MenuIconMobile from '@icons/MenuIconMobile'
 import ArchiveIcon from '@icons/ArchiveIcon'
@@ -16,28 +25,28 @@ const links = [
   {
     label: 'Кошелек',
     icon: WalletIcon,
-    pathToMatch: '/wallet',
-    absolutePath: '/wallet',
+    path: '/wallet',
   },
   {
     label: 'Торговый бот',
     icon: AndroidIcon,
-    pathToMatch: '/trading-bot',
-    absolutePath: '/trading-bot',
+    path: '/trading-bot',
   },
-  { label: 'Фонд', icon: GraphIcon, pathToMatch: '/fund', absolutePath: '/fund' },
+  { label: 'Фонд', icon: GraphIcon, path: '/fund' },
   {
     label: 'Верификация',
     icon: ShieldIcon,
-    pathToMatch: '/verification',
-    absolutePath: '/verification',
+    path: '/verification',
   },
-  { label: 'Новости', icon: ArchiveIcon, pathToMatch: '/news', absolutePath: '/news' },
+  {
+    label: 'Новости',
+    icon: ArchiveIcon,
+    path: '/news',
+  },
   {
     label: 'Вход',
     icon: LoginIcon,
-    pathToMatch: /signup|signin/,
-    absolutePath: '/signin',
+    path: '/signin',
   },
 ]
 
@@ -46,7 +55,7 @@ const Sidebar = ({ flex }) => {
     width: '50px',
     height: '50px',
   }
-  const [isActiveMenu, setActiveMenu] = useState(false);
+  const [isActiveMenu, setActiveMenu] = useState(false)
   const { pathname: path } = useRouter()
   return (
     <Box
@@ -103,10 +112,11 @@ const Sidebar = ({ flex }) => {
             py='65px'
             border='1px solid'
             borderColor='custom.gray'
+            bg={path.match(MenuLink.path) ? 'rgb(248, 249, 249)' : '#fff'}
           >
-            <Link href={MenuLink.absolutePath}>
+            <Link href={MenuLink.path}>
               <VStack>
-                <MenuLink.icon isActive={path.match(MenuLink.absolutePath)} />
+                <MenuLink.icon isActive={path.match(MenuLink.path)} />
                 <Text
                   textTransform={'uppercase'}
                   color='custom.black'
