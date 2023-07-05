@@ -80,7 +80,7 @@ const Sidebar = ({ flex }) => {
           >
             <Link href={MenuLink.absolutePath}>
               <VStack>
-                <MenuLink.icon isActive={path.match(MenuLink.pathToMatch)} />
+                <MenuLink.icon isActive={path.match(MenuLink.absolutePath)} />
                 <Text textTransform={'uppercase'} color='custom.black' fontSize='24px'>
                   {MenuLink.label}
                 </Text>

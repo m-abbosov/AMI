@@ -3,11 +3,11 @@ import { Box} from '@chakra-ui/react'
 import SignUpForm from './components/SignUpForm'
 import PageHead from '@modules/common/PageHead'
 import SwitchLink from './components/SwitchLink'
+import MainSectionLayout from '@modules/common/MainSectionLayout'
 
 const SignUp = () => {
   return (
-    <Box pt='70px'>
-      <PageHead>Регистрация</PageHead>
+    <MainSectionLayout title='Регистрация' pb='60px'>
       <Box mt='50px'>
         <SignUpForm />
       </Box>
@@ -18,7 +18,7 @@ const SignUp = () => {
           path='/signin'
         />
       </Box>
-    </Box>
+    </MainSectionLayout>
   )
 }
 

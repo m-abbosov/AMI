@@ -3,22 +3,18 @@ import { Box, Text } from '@chakra-ui/react'
 import PageHead from '@modules/common/PageHead'
 import SwitchLink from './components/SwitchLink'
 import SignInForm from './components/SignInForm'
+import MainSectionLayout from '@modules/common/MainSectionLayout'
 
 const SignIn = () => {
   return (
-    <Box pt='70px'>
-      <PageHead>Вход</PageHead>
+    <MainSectionLayout title='Вход'>
       <Box mt='50px'>
-        <SignInForm/>
+        <SignInForm />
       </Box>
       <Box textAlign='center' mt='30px' w='full'>
-        <SwitchLink
-          label={''}
-          linkLabel='Регистрация'
-          path='/signup'
-        />
+        <SwitchLink label={''} linkLabel='Регистрация' path='/signup' />
       </Box>
-    </Box>
+    </MainSectionLayout>
   )
 }
 
