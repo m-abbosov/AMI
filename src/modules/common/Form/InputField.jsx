@@ -6,8 +6,7 @@ const InputField = ({type, placeholder}) => {
     <Input
       variant='filled'
       bg='custom.gray'
-      p='27px 30px'
-      height='78px'
+      p={['25px 25px', '27px 30px']}
       rounded='none'
       type={type}
       placeholder={placeholder}

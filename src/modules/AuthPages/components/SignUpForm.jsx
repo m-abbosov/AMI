@@ -16,7 +16,7 @@ const formFields = [
   },
   {
     label: 'Номер телефона',
-    placeholder: 'Введите ваш номер телефона',
+    placeholder: 'Введите ваш телефон',
     type: 'phone',
     icon: FiPhoneCall,
   },
@@ -50,13 +50,13 @@ const checkBoxes = ['Terms of use', 'Cookie policy']
 
 const SignUpForm = () => {
   return (
-    <Box p='40px' bg='white' maxWidth='770px' margin='0 auto'>
+    <Box p={['20px', '40px']} bg='white' maxWidth='770px' margin='0 auto'>
       <form>
-        <Flex flexWrap={'wrap'} gap='30px' justifyContent={'center'}>
+        <Flex flexWrap={'wrap'} gap={['10px', '30px']} justifyContent={'center'}>
           {formFields.map((field, i) => (
-            <FormField w='45%' key={i} {...field} />
+            <FormField w={['100%', '45%']} key={i} {...field} />
           ))}
-          <Box width='45%'>
+          <Box width={['100%', '45%']}>
             <Btn type='submit'>
               <span>Зарегистрироваться</span>
               <Icon
@@ -66,7 +66,7 @@ const SignUpForm = () => {
               />
             </Btn>
           </Box>
-          <Box width='45%'>
+          <Box width={['100%', '45%']}>
             <Stack direction='row' gap='20px' alignItems='center' height='full'>
               {checkBoxes.map((checkbox, i) => (
                 <Checkbox key={i}>

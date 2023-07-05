@@ -1,5 +1,6 @@
-import { Box, Flex, Grid, GridItem, Icon, Text, VStack } from '@chakra-ui/react'
+import { Box, Flex, Grid, GridItem, Icon, Text, VStack, HStack } from '@chakra-ui/react'
 import AndroidIcon from '@icons/AndroidIcon'
+import MenuIconMobile from '@icons/MenuIconMobile'
 import ArchiveIcon from '@icons/ArchiveIcon'
 import GraphIcon from '@icons/GraphIcon'
 import LoginIcon from '@icons/LoginIcon'
@@ -7,7 +8,9 @@ import ShieldIcon from '@icons/ShieldIcon'
 import WalletIcon from '@icons/WalletIcon'
 import Link from 'next/link'
 import { useRouter } from 'next/router'
-import React from 'react'
+import React, { useState } from 'react'
+
+import LangMenu from '@modules/common/LangMenu'
 
 const links = [
   {
@@ -39,36 +42,51 @@ const links = [
 ]
 
 const Sidebar = ({ flex }) => {
+  const langMenuStyle = {
+    width: '50px',
+    height: '50px',
+  }
+  const [isActiveMenu, setActiveMenu] = useState(false);
   const { pathname: path } = useRouter()
   return (
-    <Box position='relative' height='100vh' flex={flex || 1} minH='100vh'>
-      <VStack spacing={0} w='full' py='50px' textAlign='center'>
+    <Box position='relative' height={['100%', '100vh']} flex={flex || 1} py={['20px', '0px']} minH={['100%', '100vh']}>
+      <Flex minWidth='max-content' alignItems='center' gap='7' justifyContent='center'>
+        <VStack spacing={0} w='full' py='0px' textAlign='center'>
         <Text
           className='logoText'
-          fontSize='52px'
+            fontSize={['26px', '52px']}
           color='darkGray'
           textTransform={'uppercase'}
-          sx={{ mb: '-20px' }}
+            sx={{ mb: ['0', '-20px'] }}
         >
           ami
         </Text>
         <Text
           className='logoText'
-          fontSize='20px'
+            fontSize={['10px', '20px']}
           color='darkGray'
           textTransform={'uppercase'}
           sx={{ padding: 0, margin: 0 }}
         >
           finance
-        </Text>
-      </VStack>
+          </Text>
+        </VStack>
+        <HStack spacing={5} w='full' py='0px' textAlign='center' >
+          <LangMenu width='50px' height='50px' display={['block', 'none']} />
+          <MenuIconMobile isActiveMenu={isActiveMenu} />
+        </HStack>
+
+
+
+      </Flex>
       <Grid
         position='absolute'
         top='23%'
         bottom='0'
         left='0'
-        w='full'
+        w={['100%', 'full']}
         templateColumns='repeat(2, 1fr)'
+        display={['none', 'grid']}
       >
         {links.map((MenuLink, i) => (
           <GridItem

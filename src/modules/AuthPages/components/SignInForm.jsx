@@ -13,7 +13,7 @@ const formFields = [
 
 const SignInForm = () => {
   return (
-    <Box p='40px 50px' bg='white' maxWidth='420px' margin='0 auto'>
+    <Box p={['20px 20px', '40px 50px']} bg='white' maxWidth='420px' margin='0 auto'>
       <form>
         <Stack direction='column' gap='30px'>
           {formFields.map((field, i) => (
