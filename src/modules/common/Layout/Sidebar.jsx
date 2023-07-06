@@ -23,6 +23,11 @@ import LangMenu from '@modules/common/LangMenu'
 
 const links = [
   {
+    label: 'Главная',
+    icon: WalletIcon,
+    path: '/main',
+  },
+  {
     label: 'Кошелек',
     icon: WalletIcon,
     path: '/wallet',
@@ -57,6 +62,12 @@ const Sidebar = ({ flex }) => {
   }
   const [isActiveMenu, setActiveMenu] = useState(false)
   const { pathname: path } = useRouter()
+  const linksData = links.filter((link, i)=>{
+    if(path.match(/main/)){
+      return link.label !== 'Кошелек'
+    }
+    return link.label !== 'Главная'
+  })
   return (
     <Box
       position='relative'
@@ -99,13 +110,14 @@ const Sidebar = ({ flex }) => {
       <Grid
         pos={'fixed'}
         width='25%'
-        right='0'
         top='23%'
+        right='0'
         bottom='0'
+        // bg='green'
         templateColumns='repeat(2, 1fr)'
         display={['none', 'grid']}
       >
-        {links.map((MenuLink, i) => (
+        {linksData.map((MenuLink, i) => (
           <GridItem
             cursor='pointer'
             key={i}
