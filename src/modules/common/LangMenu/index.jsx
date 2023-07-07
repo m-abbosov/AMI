@@ -2,19 +2,19 @@ import { Button, Menu, MenuButton, MenuItem, MenuList } from '@chakra-ui/react'
 import React from 'react'
 import { AiFillCaretDown } from 'react-icons/ai'
 
-const LangMenu = ({ width, height, display }) => {
+const LangMenu = ({...styles}) => {
   return (
     <Menu >
       <MenuButton
         fontWeight={'400'}
         fontSize={['20px', '24px']}
-        border='1px solid #ccc'
+        border='1px solid'
+        borderColor='rgba(37, 39, 40, 0.1)'
+        bg='transparent'
         rounded='none'
         as={Button}
         rightIcon={<AiFillCaretDown size='10px' />}
-        height={height}
-        width={width}
-        display={...display || 'block'}
+        {...styles}
       >
         RU
       </MenuButton>

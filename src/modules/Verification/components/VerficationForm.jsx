@@ -1,8 +1,10 @@
-import { Box, Flex, Input, Select, Stack } from '@chakra-ui/react'
+import { Box, Text, Flex, Icon, Input, Select, Stack } from '@chakra-ui/react'
 import Btn from '@modules/common/Btn'
 import FormField from '@modules/common/Form/FormField'
+import FormFileField from '@modules/common/Form/FormFileField'
 import FormSelectField from '@modules/common/Form/FormSelectField'
 import React from 'react'
+import {AiFillClockCircle} from 'react-icons/ai'
 
 const formFields = [
   {
@@ -111,12 +113,23 @@ const VerficationForm = () => {
               />
             )
           })}
-          
-          <Input w={['100%', '30%']} type='file' placeholder='file 2' p='30px' />
-          <Input w={['100%', '30%']} type='file' placeholder='file 2' p='30px' />
-          <Stack direction='column'>
+          <FormFileField w='30%' label='Прикрепите фото вашего паспорта' />
+          <FormFileField w='30%' label='Прикрепите фото с паспортом' />
+          <Stack direction='column' w='30%' pt='32px'>
             <Btn>Отправить</Btn>
-            <p> Заявка будет рассмотрена в течение 72 часов.</p>
+            <Stack direction='row' alignItems='flex-start'>
+              <Icon as={AiFillClockCircle} fill='rgba(41, 45, 50, 0.2)' />
+              <Text
+                // bg='yellow'
+                mt='-3px'
+                fontSize='13px'
+                as='span'
+                fontFamily={'Manrope'}
+                color='#252728;'
+              >
+                Заявка будет рассмотрена в течение 72 часов.
+              </Text>
+            </Stack>
           </Stack>
         </Flex>
       </form>

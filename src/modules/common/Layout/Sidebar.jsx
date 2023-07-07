@@ -1,4 +1,13 @@
-import { Box, Flex, Grid, GridItem, Icon, Text, VStack, HStack, Button } from '@chakra-ui/react'
+import {
+  Box,
+  Flex,
+  Grid,
+  GridItem,
+  Icon,
+  Text,
+  VStack,
+  HStack, Button,
+} from '@chakra-ui/react'
 import AndroidIcon from '@icons/AndroidIcon'
 import MenuIconMobile from '@icons/MenuIconMobile'
 import ArchiveIcon from '@icons/ArchiveIcon'
@@ -8,7 +17,7 @@ import ShieldIcon from '@icons/ShieldIcon'
 import WalletIcon from '@icons/WalletIcon'
 import Link from 'next/link'
 import { useRouter } from 'next/router'
-import React, { useRef } from 'react'
+import React, { useRef, useEffect } from 'react'
 import useShowComponent from '../hooks/useShowComponent'
 import { lock, unlock } from "tua-body-scroll-lock"
 
@@ -18,30 +27,35 @@ import LangMenu from '@modules/common/LangMenu'
 
 const links = [
   {
+    label: 'Главная',
+    icon: WalletIcon,
+    path: '/main',
+  },
+  {
     label: 'Кошелек',
     icon: WalletIcon,
-    pathToMatch: '/wallet',
-    absolutePath: '/wallet',
+    path: '/wallet',
   },
   {
     label: 'Торговый бот',
     icon: AndroidIcon,
-    pathToMatch: '/trading-bot',
-    absolutePath: '/trading-bot',
+    path: '/trading-bot',
   },
-  { label: 'Фонд', icon: GraphIcon, pathToMatch: '/fund', absolutePath: '/fund' },
+  { label: 'Фонд', icon: GraphIcon, path: '/fund' },
   {
     label: 'Верификация',
     icon: ShieldIcon,
-    pathToMatch: '/verification',
-    absolutePath: '/verification',
+    path: '/verification',
   },
-  { label: 'Новости', icon: ArchiveIcon, pathToMatch: '/news', absolutePath: '/news' },
+  {
+    label: 'Новости',
+    icon: ArchiveIcon,
+    path: '/news',
+  },
   {
     label: 'Вход',
     icon: LoginIcon,
-    pathToMatch: /signup|signin/,
-    absolutePath: '/signin',
+    path: '/signin',
   },
 ]
 
@@ -56,6 +70,19 @@ const Sidebar = ({ flex }) => {
    /* Scroll locking while mobile menu icon is active */
 
   const { pathname: path } = useRouter()
+  const linksData = links.filter((link, i)=>{
+    if(path.match(/main/)){
+      return link.label !== 'Кошелек'
+    }
+    return link.label !== 'Главная'
+  })
+
+
+  useEffect(() => {
+    setActiveMenu(false)
+  }, [path])
+
+
   return (
     <Box position={['relative']} height={['100%', '100vh']} flex={flex || 1} py={['20px', '0px']} minH={['100%', '100vh']} display='flex' justifyContent='center' >
       <Flex minWidth={['100%', 'max-content']} alignItems={['center', 'start']} gap='7' justifyContent={['space-between', 'center']} >
@@ -100,7 +127,7 @@ const Sidebar = ({ flex }) => {
         display={[`${isActiveMenu ? 'grid' : 'none'}`, 'grid']}
         ref={divRef}
       >
-        {links.map((MenuLink, i) => (
+        {linksData.map((MenuLink, i) => (
           <GridItem
             cursor='pointer'
             key={i}
@@ -108,8 +135,9 @@ const Sidebar = ({ flex }) => {
             border='1px solid'
             borderColor='custom.gray'
             bgColor='white'
+            bg={path.match(MenuLink.path) ? 'rgb(248, 249, 249)' : '#fff'}
           >
-            <Link href={MenuLink.absolutePath}>
+            <Link href={MenuLink.path}>
               <VStack>
                 <MenuLink.icon isActive={path.match(MenuLink.absolutePath)} />
                 <Text textTransform={'uppercase'} color='custom.black' fontSize='24px'>
