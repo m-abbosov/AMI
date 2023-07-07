@@ -17,7 +17,7 @@ const PageHead = ({justifyContent, children}) => {
       <Stack
         direction='row'
         position='absolute'
-        right='70px'
+        right='0'
         display={['none', 'flex']}
       >
         {isTheMainPage && <NotificationsBell />}

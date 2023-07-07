@@ -9,6 +9,7 @@ const theme = extendTheme({
       blue: '#2C7BC4',
       yellow: '#FFCF52',  
       grayIcon: 'rgba(0,0,0,0.2)',
+      green: '#4BB155'
     },
   },
   fonts: {
