@@ -90,29 +90,30 @@ const formFields = [
 
 const VerficationForm = () => {
   return (
-    <Box p='40px 50px' w='full' bg='white'>
+    <Box p={['20px 20px', '40px 50px']} w='full' bg='white'>
       <form>
         <Flex
           flexWrap='wrap'
-          gap='30px'
+          gap={['15px', '30px']}
           justifyContent='space-between'
           alignItems='flex-start'
+          direction={['column', 'row']}
         >
           {formFields.map((field, i) => {
             const w = field.size === 'lg' ? '48%' : '30%'
             return field.type !== 'select' ? (
-              <FormField key={i} {...field} w={w} />
+              <FormField key={i} {...field} w={['100%', w]} />
             ) : (
               <FormSelectField
                 key={i}
                 {...field}
-                w={field.size === 'lg' ? '45%' : '30%'}
+                  w={[`100%`, `${field.size === 'lg' ? '45%' : '30%'}`]}
               />
             )
           })}
           
-          <Input w='30%' type='file' placeholder='file 2' p='30px' />
-          <Input w='30%' type='file' placeholder='file 2' p='30px' />
+          <Input w={['100%', '30%']} type='file' placeholder='file 2' p='30px' />
+          <Input w={['100%', '30%']} type='file' placeholder='file 2' p='30px' />
           <Stack direction='column'>
             <Btn>Отправить</Btn>
             <p> Заявка будет рассмотрена в течение 72 часов.</p>

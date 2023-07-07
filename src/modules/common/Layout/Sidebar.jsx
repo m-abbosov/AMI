@@ -1,4 +1,4 @@
-import { Box, Flex, Grid, GridItem, Icon, Text, VStack, HStack } from '@chakra-ui/react'
+import { Box, Flex, Grid, GridItem, Icon, Text, VStack, HStack, Button } from '@chakra-ui/react'
 import AndroidIcon from '@icons/AndroidIcon'
 import MenuIconMobile from '@icons/MenuIconMobile'
 import ArchiveIcon from '@icons/ArchiveIcon'
@@ -8,7 +8,11 @@ import ShieldIcon from '@icons/ShieldIcon'
 import WalletIcon from '@icons/WalletIcon'
 import Link from 'next/link'
 import { useRouter } from 'next/router'
-import React, { useState } from 'react'
+import React, { useRef } from 'react'
+import useShowComponent from '../hooks/useShowComponent'
+import { lock, unlock } from "tua-body-scroll-lock"
+
+
 
 import LangMenu from '@modules/common/LangMenu'
 
@@ -42,15 +46,19 @@ const links = [
 ]
 
 const Sidebar = ({ flex }) => {
-  const langMenuStyle = {
-    width: '50px',
-    height: '50px',
-  }
-  const [isActiveMenu, setActiveMenu] = useState(false);
+
+
+  const [isActiveMenu, setActiveMenu] = useShowComponent()
+
+  const divRef = useRef(null)  //to select specific element for scroll locking
+
+  isActiveMenu ? lock(divRef.current) : unlock(divRef.current)
+   /* Scroll locking while mobile menu icon is active */
+
   const { pathname: path } = useRouter()
   return (
-    <Box position='relative' height={['100%', '100vh']} flex={flex || 1} py={['20px', '0px']} minH={['100%', '100vh']}>
-      <Flex minWidth='max-content' alignItems='center' gap='7' justifyContent='center'>
+    <Box position={['relative']} height={['100%', '100vh']} flex={flex || 1} py={['20px', '0px']} minH={['100%', '100vh']} display='flex' justifyContent='center' >
+      <Flex minWidth={['100%', 'max-content']} alignItems={['center', 'start']} gap='7' justifyContent={['space-between', 'center']} >
         <VStack spacing={0} w='full' py='0px' textAlign='center'>
         <Text
           className='logoText'
@@ -73,7 +81,9 @@ const Sidebar = ({ flex }) => {
         </VStack>
         <HStack spacing={5} w='full' py='0px' textAlign='center' >
           <LangMenu width='50px' height='50px' display={['block', 'none']} />
+          <Button onClick={() => setActiveMenu(!isActiveMenu)} display={['contents', 'none']}>
           <MenuIconMobile isActiveMenu={isActiveMenu} />
+          </Button>
         </HStack>
 
 
@@ -81,12 +91,14 @@ const Sidebar = ({ flex }) => {
       </Flex>
       <Grid
         position='absolute'
-        top='23%'
+        top={['83%', '23%']}
+        height={['100vh', '60vh']}
         bottom='0'
         left='0'
         w={['100%', 'full']}
         templateColumns='repeat(2, 1fr)'
-        display={['none', 'grid']}
+        display={[`${isActiveMenu ? 'grid' : 'none'}`, 'grid']}
+        ref={divRef}
       >
         {links.map((MenuLink, i) => (
           <GridItem
@@ -95,6 +107,7 @@ const Sidebar = ({ flex }) => {
             py='65px'
             border='1px solid'
             borderColor='custom.gray'
+            bgColor='white'
           >
             <Link href={MenuLink.absolutePath}>
               <VStack>
@@ -109,6 +122,10 @@ const Sidebar = ({ flex }) => {
       </Grid>
     </Box>
   )
+
+
 }
 
-export default Sidebar
+
+
+export default Sidebar 
