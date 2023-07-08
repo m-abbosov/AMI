@@ -20,9 +20,6 @@ import { useRouter } from 'next/router'
 import React, { useRef, useEffect } from 'react'
 import useShowComponent from '../hooks/useShowComponent'
 import { lock, unlock } from "tua-body-scroll-lock"
-
-
-
 import LangMenu from '@modules/common/LangMenu'
 
 const links = [
@@ -112,17 +109,13 @@ const Sidebar = ({ flex }) => {
           <MenuIconMobile isActiveMenu={isActiveMenu} />
           </Button>
         </HStack>
-
-
-
       </Flex>
       <Grid
-        position='absolute'
+        pos='fixed'
         top={['83%', '23%']}
-        height={['100vh', '60vh']}
         bottom='0'
-        left='0'
-        w={['100%', 'full']}
+        right='0'
+        w={['100%', '25%']}
         templateColumns='repeat(2, 1fr)'
         display={[`${isActiveMenu ? 'grid' : 'none'}`, 'grid']}
         ref={divRef}
