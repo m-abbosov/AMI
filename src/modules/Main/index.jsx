@@ -12,6 +12,8 @@ import DataCardLayout from './components/DataCardLayout'
 import Btn from '@modules/common/Btn'
 import DataRow from './components/DataRow'
 import InvestmentCard from './components/InvestmentCard'
+import CardTitle from './components/CardTitle'
+import { BsCircleFill } from 'react-icons/bs'
 
 const fundData = [
   {
@@ -56,7 +58,7 @@ const tradeBotData = [
 
 const Main = () => {
   return (
-    <MainSectionLayout title='Главная' justifyContent={'flex-start'}>
+    <MainSectionLayout title='Главная' justifyContent={'flex-start'} pb='50px'>
       <Stack pt='40px' direction='column' spacing={'30px'}>
         <Flex gap='30px'>
           <Box flex='1'>
@@ -126,7 +128,33 @@ const Main = () => {
             </Btn>
           </DataCardLayout>
         </Flex>
-        <InvestmentCard/>
+        <InvestmentCard />
+        <Box bg='white' p='30px 40px'>
+          <Flex w='full'>
+            <Box flex='3'>
+              <CardTitle>Название бота</CardTitle>
+              <Stack
+                pt='5px'
+                color='custom.green'
+                direction='row'
+                alignItems={'center'}
+              >
+                <Icon as={BsCircleFill} fontSize='5px' />
+                <Text fontFamily='Manrope' fontSize='13px' fontWeight='700' lineHeight='24px'>Активен</Text>
+              </Stack>
+            </Box>
+            <Box flex='1'>
+              <Btn
+                border='1px solid rgba(37, 39, 40, 0.15);'
+                bg='white'
+                justifyContent='center'
+                textTransform='uppercase'
+              >
+                отчетность
+              </Btn>
+            </Box>
+          </Flex>
+        </Box>
       </Stack>
     </MainSectionLayout>
   )
