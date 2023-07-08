@@ -1,14 +1,17 @@
-import { Box, Divider, Flex, Icon, Stack, Text } from '@chakra-ui/react'
+import { Box, Flex, Icon, Stack, Text } from '@chakra-ui/react'
 import DollarIcon from '@icons/DollarIcon'
 import MoneySendIcon from '@icons/MoneySendIcon'
 import ReceiptIcon from '@icons/ReceiptIcon'
 import MainSectionLayout from '@modules/common/MainSectionLayout'
 import React from 'react'
-import DataBox from './components/DataBox'
+import DataCard from './components/DataCard'
 import ChartIcon from '@icons/ChartIcon'
 import AndroidIcon from '@icons/AndroidIcon'
-import BoxTitle from './components/BoxTitle'
 import WalletIcon from '@icons/WalletIcon'
+import DataCardLayout from './components/DataCardLayout'
+import Btn from '@modules/common/Btn'
+import DataRow from './components/DataRow'
+import InvestmentCard from './components/InvestmentCard'
 
 const fundData = [
   {
@@ -57,20 +60,18 @@ const Main = () => {
       <Stack pt='40px' direction='column' spacing={'30px'}>
         <Flex gap='30px'>
           <Box flex='1'>
-            <DataBox title='Фонд' data={fundData} />
+            <DataCard title='Фонд' data={fundData} />
           </Box>
-          <Box bg='white' flex='1' height='300px'>
-            <DataBox title='Торговый бот' data={tradeBotData} />
+          <Box flex='1'>
+            <DataCard title='Торговый бот' data={tradeBotData} />
           </Box>
         </Flex>
         <Flex gap='30px'>
-          <Box p='32px 40px' bg='white'>
-            <BoxTitle>Баланс USDT</BoxTitle>
+          <DataCardLayout flex='1' title='Баланс USDT'>
             <Stack direction='column' pt='16px'>
-              <Stack direction='row'>
-                <Icon size='24px' as={WalletIcon} />
-                <Text>100 000,00 SDT</Text>
-              </Stack>
+              <DataRow icon={WalletIcon} color='custom.black'>
+                100 000,00 SDT
+              </DataRow>
               <Stack direction='row'>
                 <Text fontFamily={'Manrope'} as='span' fontSize='12px'>
                   Доступно к выводу:
@@ -79,25 +80,56 @@ const Main = () => {
                   as='span'
                   fontFamily={'Manrope'}
                   fontSize='12px'
+                  fontWeight='400'
                   color='custom.green'
                 >
                   1000 USDT
                 </Text>
               </Stack>
+              <Stack pt='15px' direction='row' gap='30px'>
+                <Btn justifyContent='center' p='30.5px 48px'>
+                  Пополнение
+                </Btn>
+                <Btn
+                  bg='white'
+                  border='1px solid rgba(37, 39, 40, 0.10);'
+                  justifyContent='center'
+                  p='30.5px 48px'
+                >
+                  Вывод средств
+                </Btn>
+              </Stack>
             </Stack>
-          </Box>
+          </DataCardLayout>
+          <DataCardLayout flex='1' title='Комиссионная задолженность'>
+            <DataRow icon={WalletIcon} color='#EA1212' pt='16px'>
+              $956,57
+            </DataRow>
+            <Btn
+              bg='white'
+              mt='38px'
+              justifyContent='space-between'
+              border='1px solid rgba(37, 39, 40, 0.10)'
+            >
+              <Text
+                color='#252728'
+                fontFamily={`Ristretto Pro`}
+                textTransform={'uppercase'}
+                fontWeight='400'
+                fontSize='24px'
+                p='30.5 28px'
+                letterSpacing={'0.72px'}
+              >
+                Оплатить
+              </Text>
+              <Icon as={MoneySendIcon} />
+            </Btn>
+          </DataCardLayout>
         </Flex>
+        <InvestmentCard/>
       </Stack>
     </MainSectionLayout>
   )
 }
 
 export default Main
-/**
-color: #252728;
-font-family: Manrope;
-font-size: 13px;
-font-style: normal;
-font-weight: 400;
-line-height: 24px;
- */
